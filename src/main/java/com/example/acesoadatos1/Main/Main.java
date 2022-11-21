@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    static final Scanner keyboard = new Scanner(System.in);
-    private static String Filename;
-    public static void main(String[] args) {
+    final  Scanner keyboard = new Scanner(System.in);
+    private  String Filename;
+    public  void main(String[] args) {
 
     }
 
-    public static void menu(Variables variable, int option) throws IOException {
+    public void menu(Variables variable, int option) throws IOException {
         switch (option) {
             case 1:
                 deleteFile(Filename);
@@ -42,17 +42,32 @@ public class Main {
                 generateFile(variable, Filename);
                 switchOptions(variable);//Vuelta al menu
                 break;
+            case 4:
+
+                switchOptions(variable);//Vuelta al menu
+                break;
+            case 5:
+                System.out.println("Introduce la Id del objeto que desea buscar");
+                String id= keyboard.nextLine();
+                variable.Objetoigual(id);
+                switchOptions(variable);//Vuelta al menu
+                break;
+            case 6:
+
+                switchOptions(variable);//Vuelta al menu
+                break;
             case 0:
                 exit(); //Salida del programa
                 break;
         }
     }
 
-    private static Objeto introducirObjeto() {
+
+    private  Objeto introducirObjeto() {
         return null;
     }
 
-    public static void switchOptions(Variables variable) throws InputMismatchException { //Metodo para imprimir menu e introducir la opción deseada
+    public  void switchOptions(Variables variable) throws InputMismatchException { //Metodo para imprimir menu e introducir la opción deseada
         boolean repeat = false;
         do {
 
@@ -65,11 +80,14 @@ public class Main {
                         + "2º Modificar objeto.\n"
                         + "3º Eliminar objeto.\n"
                         + "4º Guardar datos en otra ruta.\n"
+                        + "5º Busqueda de objeto por ID.\n"
+                        + "6º Guardar datos en ruta alternativa.\n"
+                        + "7º Cambiar ruta de guardado de datos.\n"
                         + "0º Salir\n"
                         + "Porfavor escriba la opción deseada: ");
 
                 int choice = keyboard.nextInt();
-                if (choice < 0 || choice > 4)
+                if (choice < 0 || choice > 7)
                     throw new OutofRangeException("Error. Tienes que introducir un número entre 0 y 3"); //Excepcion introducida para comprobar que los valores esten entre 0 y 5
                 menu(variable, choice);
             } catch (OutofRangeException exc2) {
@@ -86,7 +104,7 @@ public class Main {
     }
 
 
-    public static void leerObjetos(Variables variable, String route) throws FileNotFoundException {
+    public  void leerObjetos(Variables variable, String route) throws FileNotFoundException {
         File f = new File(route);
         Scanner nombre_f = new Scanner(f);
 
@@ -102,7 +120,7 @@ public class Main {
         nombre_f.close();
     }//end method
 
-    public static void generateFile(Variables variables, String fileName) {
+    public  void generateFile(Variables variables, String fileName) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File(fileName), true));
 
@@ -117,21 +135,23 @@ public class Main {
         }
     }
 
-    public static void newObjeto(Objeto ob){
+    public  void newObjeto(Objeto ob){
 
     }
 
-    public static void modificarObjeto(Objeto ob){
+    public  void modificarObjeto(Objeto ob){
 
     }
 
-    public static void eliminarObjeto(Objeto ob){
+    public  void eliminarObjeto(Objeto ob){
 
     }
-    public static void exit() { //Metodo para salir del programa
+
+
+    public  void exit() { //Metodo para salir del programa
         System.out.println("Gracias por usar nuestro programa. ¡Hasta pronto!");
     }
-    public static void deleteFile(String FileName) throws IOException{
+    public  void deleteFile(String FileName) throws IOException{
         new FileWriter(FileName, false).close();
     }
 }

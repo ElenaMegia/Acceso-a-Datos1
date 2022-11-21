@@ -2,7 +2,7 @@ package com.example.acesoadatos1.Objeto;
 
 public class Objeto {
     private int numero;
-    private String frase;
+    private String id;
     private String imagen;
     private double numerodecimal;
     private char letra;
@@ -11,9 +11,9 @@ public class Objeto {
     public Objeto() {
     }
 
-    public Objeto(int numero, String frase, String imagen, double numerodecimal, char letra) {
+    public Objeto(int numero, String id, String imagen, double numerodecimal, char letra) {
         this.numero = numero;
-        this.frase = frase;
+        this.id = id;
         this.imagen = imagen;
         this.numerodecimal = numerodecimal;
         this.letra = letra;
@@ -27,12 +27,12 @@ public class Objeto {
         this.numero = numero;
     }
 
-    public String getFrase() {
-        return frase;
+    public String getId() {
+        return id;
     }
 
-    public void setFrase(String frase) {
-        this.frase = frase;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getImagen() {
@@ -64,7 +64,7 @@ public class Objeto {
     public String toString() {
         return "Objeto{" +
                 "numero=" + numero +
-                ", frase='" + frase + '\'' +
+                ", ID='" + id + '\'' +
                 ", imagen='" + imagen + '\'' +
                 ", numerodecimal=" + numerodecimal +
                 ", letra=" + letra +

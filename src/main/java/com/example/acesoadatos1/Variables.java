@@ -1,9 +1,9 @@
 package com.example.acesoadatos1;
 
 import com.example.acesoadatos1.Objeto.Objeto;
+import org.springframework.validation.ObjectError;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Variables {
     private ArrayList<Objeto> listaObjeto;
@@ -12,6 +12,15 @@ public class Variables {
     public Variables(ArrayList<Objeto> listaObjeto, int numObjeto) {
         this.listaObjeto = listaObjeto;
         NumObjeto = numObjeto;
+    }
+
+    public void Objetoigual(String id) {
+
+        for(int i=0; i<listaObjeto.size(); i++) {
+            if (listaObjeto.get(i).getId().equals(id)) {
+                listaObjeto.get(i).toString();
+            }
+        }
     }
 
     public ArrayList<Objeto> getListaObjeto() {
@@ -38,7 +47,7 @@ public class Variables {
 
     public  void  ModificcarObjetos(Objeto ob, int posi){
         Objeto objeto=listaObjeto.get(posi);
-        objeto.setFrase(ob.getFrase());
+        objeto.setId(ob.getId());
         objeto.setLetra(ob.getLetra());
         objeto.setImagen(ob.getImagen());
         objeto.setNumero(ob.getNumero());
@@ -52,7 +61,7 @@ public class Variables {
     public boolean BuscarObjeto(Objeto ob1, String frase){
         boolean encontrado=false;
         for(int i=0; i<listaObjeto.size(); i++){
-            if(ob1.getFrase().equals(frase)) {
+            if(ob1.getId().equals(frase)) {
                     encontrado=true;
             }
         }
