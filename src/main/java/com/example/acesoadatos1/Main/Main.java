@@ -1,8 +1,7 @@
 package com.example.acesoadatos1.Main;
 
-import com.example.acesoadatos1.Objeto.Objeto;
+import com.example.acesoadatos1.Objeto.Persona;
 import com.example.acesoadatos1.OutofRangeException;
-import com.example.acesoadatos1.Variables;
 
 import java.io.*;
 import java.util.InputMismatchException;
@@ -20,14 +19,14 @@ public class Main {
         switch (option) {
             case 1:
                 deleteFile(Filename);
-                Objeto ob1= introducirObjeto();
+                Persona ob1= introducirObjeto();
                 variable.AddObjetos(ob1);
                 generateFile(variable, Filename);
                 switchOptions(variable); //Vuelta al menu
                 break;
             case 2:
                 deleteFile(Filename);
-                Objeto ob2= introducirObjeto();
+                Persona ob2= introducirObjeto();
                 System.out.println("Introduce la posicion del objeto que quiere modificar");
                 int posicion= keyboard.nextInt();
                 variable.ModificcarObjetos(ob2, posicion);
@@ -49,7 +48,7 @@ public class Main {
             case 5:
                 System.out.println("Introduce la Id del objeto que desea buscar");
                 String id= keyboard.nextLine();
-                variable.Objetoigual(id);
+                variable.PersonaIgual(id);
                 switchOptions(variable);//Vuelta al menu
                 break;
             case 6:
@@ -63,7 +62,7 @@ public class Main {
     }
 
 
-    private  Objeto introducirObjeto() {
+    private Persona introducirObjeto() {
         return null;
     }
 
@@ -114,7 +113,7 @@ public class Main {
             String imagen = nombre_f.next();
             double numerodecimal = nombre_f.nextDouble();
             char letra = nombre_f.next().charAt(0);
-            Objeto objetos = new Objeto(numero, frase, imagen, numerodecimal, letra);
+            Persona objetos = new Persona(numero, frase, imagen, numerodecimal, letra);
             variable.AddObjetos(objetos);
         }//end of while
         nombre_f.close();
@@ -124,9 +123,9 @@ public class Main {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File(fileName), true));
 
-            for (int i = 0; i < variables.getNumObjeto(); i++) {
-                Objeto objeto1 = variables.getListaObjeto().get(i);
-                writer.write(objeto1.toString());
+            for (int i = 0; i < variables.getNumPersona(); i++) {
+                Persona persona1 = variables.getListaPersona().get(i);
+                writer.write(persona1.toString());
                 writer.newLine();
             }
             writer.close();
@@ -135,15 +134,15 @@ public class Main {
         }
     }
 
-    public  void newObjeto(Objeto ob){
+    public  void newObjeto(Persona ob){
 
     }
 
-    public  void modificarObjeto(Objeto ob){
+    public  void modificarObjeto(Persona ob){
 
     }
 
-    public  void eliminarObjeto(Objeto ob){
+    public  void eliminarObjeto(Persona ob){
 
     }
 
